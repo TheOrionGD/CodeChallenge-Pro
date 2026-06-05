@@ -3,86 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeChallengePro</title>
+    <title>CodeChallengePro - Premium Coding Playground</title>
+    <link rel="icon" href="logo.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#challenges">Challenges</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#signin">Sign In</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home">
-        <h1>Welcome to CodeChallengePro</h1>
-        <p>Enhance your coding skills with challenges across various domains, from data structures to algorithms, and more.</p>
-        <p>At CodeChallengePro, we believe in the power of continuous learning. Whether you're a beginner or a seasoned coder, our platform offers a variety of challenges designed to sharpen your problem-solving skills and help you climb the ranks in the coding world.</p>
-        <a href="#challenges" class="cta-button">Get Started</a>
-    </section>
-
-    <section id="challenges">
-        <h2>Featured Challenges</h2>
-        <p>Our challenges are curated by experts to ensure they provide the right balance of difficulty and learning opportunities. Here are some of our top challenges:</p>
-        <div class="challenge-card">
-            <h3>Array Manipulation</h3>
-            <p>Difficulty: Medium</p>
-            <p>Test your skills in manipulating arrays with this intermediate challenge. Perfect for those looking to strengthen their understanding of data structures.</p>
-            <a href="#">Start Challenge</a>
-        </div>
-        <div class="challenge-card">
-            <h3>Data Structures</h3>
-            <p>Difficulty: Hard</p>
-            <p>Delve deep into data structures with this challenging problem set, designed for advanced coders who want to push their limits.</p>
-            <a href="#">Start Challenge</a>
-        </div>
-    </section>
-
-    <section id="community">
-        <h2>Community</h2>
-        <p>Join our dynamic coder community. Exchange tips, tackle challenges together, and grow your skills. We're here to support you, whether you need help or want to offer advice.</p>
-        <a href="#">Join the Community</a>
-    </section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Need help or have questions? Our support team is ready to assist you. Reach out anytime, and we'll respond promptly.</p>
-    <p>Phone: +919344462238</p>
-    <p>Name: GODFREY T R</p>
-    <a href="#">Contact Support</a>
-</section>
-
-
-<section id="signin">
-    <div class="sign-in-container">
-        <div class="sign-in-form">
-            <h2>Welcome Back!</h2>
-            <p>Please sign in to access your profile, track your progress, and participate in challenges.</p>
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand-section">
+                    <img src="logo.png" alt="CodeChallengePro Logo" class="brand-logo">
+                    <span class="brand-name">CodeChallengePro</span>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <ul class="nav-links">
+                    <li class="nav-item active" data-target="dashboard">
+                        <a class="nav-link">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-target="challenges">
+                        <a class="nav-link">
+                            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                            <span>Challenges</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-target="community">
+                        <a class="nav-link">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>Community</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-target="support">
+                        <a class="nav-link">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-target="auth" id="nav-auth-item">
+                        <a class="nav-link">
+                            <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                            <span id="nav-auth-text">Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- User Profile Quick Widget -->
+            <div class="user-profile-widget" id="user-profile-sidebar">
+                <div class="user-header">
+                    <div class="user-avatar" id="sidebar-avatar">G</div>
+                    <div class="user-details">
+                        <div class="user-name" id="sidebar-username">Guest Coder</div>
+                        <div class="user-level" id="sidebar-level">Level 1 Novice</div>
+                    </div>
                 </div>
-                <button type="submit" class="btn-submit">Sign In</button>
-                <p class="forgot-password"><a href="#">Forgot Password?</a></p>
-            </form>
-        </div>
+                <div class="user-xp-bar">
+                    <div class="xp-label">
+                        <span>XP Progress</span>
+                        <span id="sidebar-xp-value">0/1000</span>
+                    </div>
+                    <div class="xp-progress-bg">
+                        <div class="xp-progress-fill" id="sidebar-xp-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Dashboard Section -->
+            <section class="app-section active" id="dashboard">
+                <div class="section-header">
+                    <h1 class="section-title">Developer Dashboard</h1>
+                    <p class="section-desc">Track your progress, stats, and climb the developer ranks.</p>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-left">
+                        <!-- Stats Row -->
+                        <div class="stats-row">
+                            <div class="stat-card glass-panel" style="border-left: 3px solid var(--accent-blue);">
+                                <div class="stat-icon" style="background-color: var(--accent-blue-glow); color: var(--accent-blue);">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                </div>
+                                <div>
+                                    <div class="stat-value" id="stat-rank">#1,420</div>
+                                    <div class="stat-label">Global Rank</div>
+                                </div>
+                            </div>
+                            <div class="stat-card glass-panel" style="border-left: 3px solid var(--accent-purple);">
+                                <div class="stat-icon" style="background-color: var(--accent-purple-glow); color: var(--accent-purple);">
+                                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                </div>
+                                <div>
+                                    <div class="stat-value" id="stat-xp">320 XP</div>
+                                    <div class="stat-label">Total Points</div>
+                                </div>
+                            </div>
+                            <div class="stat-card glass-panel" style="border-left: 3px solid var(--accent-emerald);">
+                                <div class="stat-icon" style="background-color: var(--accent-emerald-glow); color: var(--accent-emerald);">
+                                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div>
+                                    <div class="stat-value" id="stat-solved">0 / 4</div>
+                                    <div class="stat-label">Challenges Done</div>
+                                </div>
+                            </div>
+                            <div class="stat-card glass-panel" style="border-left: 3px solid var(--accent-gold);">
+                                <div class="stat-icon" style="background-color: var(--accent-gold-glow); color: var(--accent-gold);">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <div>
+                                    <div class="stat-value" id="stat-streak">1 Day</div>
+                                    <div class="stat-label">Daily Streak</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Heatmap -->
+                        <div class="heatmap-card glass-panel">
+                            <div class="heatmap-header">
+                                <h2 class="card-title">Coding Activity</h2>
+                                <span class="stat-label">Active Coding Calendar</span>
+                            </div>
+                            <div class="heatmap-scroll-wrapper" style="overflow-x: auto; width: 100%; padding-bottom: 8px;">
+                                <div class="heatmap-grid" id="activity-heatmap" style="min-width: 540px;">
+                                    <!-- Cells will be generated by script -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Next Challenge -->
+                        <div class="recommend-card glass-panel">
+                            <div class="recommend-info">
+                                <span class="difficulty-badge easy" id="recommend-difficulty">Easy</span>
+                                <h3 class="recommend-title" id="recommend-title">String Reversal</h3>
+                                <p class="section-desc" id="recommend-desc">Write a function that reverses a string. A classic warm-up challenge.</p>
+                            </div>
+                            <button class="btn btn-primary" id="btn-start-recommended">
+                                Start Now
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Leaderboard -->
+                    <div class="dashboard-right">
+                        <div class="leaderboard-card glass-panel">
+                            <h2 class="card-title">Global Leaderboard</h2>
+                            <div class="leaderboard-list" id="leaderboard-list">
+                                <!-- Generated dynamically by Javascript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenges Section -->
+            <section class="app-section" id="challenges">
+                <div class="section-header">
+                    <h1 class="section-title">Coding Challenges</h1>
+                    <p class="section-desc">Sharpen your logic and complete challenges to earn experience points.</p>
+                </div>
+
+                <div class="challenges-toolbar">
+                    <div class="search-input-wrapper">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" placeholder="Search challenges..." class="input-field" id="challenge-search">
+                    </div>
+                    <div class="filter-tags">
+                        <span class="filter-tag active" data-filter="all">All</span>
+                        <span class="filter-tag" data-filter="easy">Easy</span>
+                        <span class="filter-tag" data-filter="medium">Medium</span>
+                        <span class="filter-tag" data-filter="hard">Hard</span>
+                    </div>
+                </div>
+
+                <div class="challenges-grid" id="challenges-grid-container">
+                    <!-- Cards are populated via script.js -->
+                </div>
+            </section>
+
+            <!-- Coding Workspace Section -->
+            <section class="app-section" id="workspace" style="padding: 0;">
+                <div class="workspace-container">
+                    <!-- Left: Description and instructions -->
+                    <div class="workspace-left">
+                        <div class="workspace-back-btn" id="workspace-back-btn">
+                            <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            <span>Back to Challenges</span>
+                        </div>
+                        <h2 class="workspace-challenge-title" id="workspace-title">Array Manipulation</h2>
+                        <div class="difficulty-badge medium" id="workspace-difficulty">Medium</div>
+                        
+                        <div class="workspace-body" id="workspace-body-content">
+                            <!-- Challenge instructions template -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Editor and Terminal -->
+                    <div class="workspace-right">
+                        <!-- Toolbar -->
+                        <div class="editor-header">
+                            <div class="editor-title">
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--accent-blue)" stroke-width="2" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                <span id="workspace-filename">solution.js</span>
+                            </div>
+                            <select class="editor-language-select" id="editor-language">
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="cpp">C++</option>
+                            </select>
+                        </div>
+
+                        <!-- Main Editor Text Area -->
+                        <div class="editor-area-wrapper">
+                            <div class="editor-line-numbers" id="line-numbers">
+                                1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10
+                            </div>
+                            <textarea class="editor-textarea" id="code-textarea" spellcheck="false"></textarea>
+                        </div>
+
+                        <!-- Console / Output Panel -->
+                        <div class="terminal-panel">
+                            <div class="terminal-header">
+                                <span class="terminal-title">Console Output</span>
+                                <div class="terminal-actions">
+                                    <button class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;" id="btn-run-code">Run Code</button>
+                                    <button class="btn btn-primary" style="padding: 4px 12px; font-size: 0.8rem;" id="btn-submit-code">Submit Code</button>
+                                </div>
+                            </div>
+                            <div class="terminal-body" id="terminal-output">
+                                <div class="terminal-line terminal-info">Terminal ready. Write code and click "Run Code" to execute test cases.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section class="app-section" id="community">
+                <div class="section-header">
+                    <h1 class="section-title">Developer Forum</h1>
+                    <p class="section-desc">Join our dynamic coder community. Exchange tips, tackle challenges together, and grow your skills.</p>
+                </div>
+
+                <div class="community-container">
+                    <div class="community-left">
+                        <!-- Create Post Box -->
+                        <div class="post-composer glass-panel">
+                            <h3 class="card-title">Share something with the community</h3>
+                            <input type="text" placeholder="Title of your post..." class="input-field" id="new-post-title" style="padding-left: 14px;">
+                            <textarea placeholder="Write your thoughts or share a tip..." class="textarea-field" id="new-post-body"></textarea>
+                            <button class="btn btn-primary" id="btn-create-post" style="width: max-content; align-self: flex-end;">Post to Community</button>
+                        </div>
+
+                        <!-- Posts List -->
+                        <div class="forum-posts" id="forum-posts-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Guidelines -->
+                    <div class="community-sidebar">
+                        <div class="sidebar-info-card glass-panel">
+                            <h3 class="card-title" style="margin-bottom: 12px;">Community Guidelines</h3>
+                            <p class="section-desc" style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
+                                We're here to support you, whether you need help or want to offer advice. Please keep discussions constructive and helpful.
+                            </p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); padding-left: 20px; line-height: 1.8;">
+                                <li>Be respectful of other members.</li>
+                                <li>Do not share direct answers to active challenges.</li>
+                                <li>Provide details when asking for help.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support / Contact Section -->
+            <section class="app-section" id="support">
+                <div class="section-header">
+                    <h1 class="section-title">Need help or have questions?</h1>
+                    <p class="section-desc">Our support team is ready to assist you. Reach out anytime, and we'll respond promptly.</p>
+                </div>
+
+                <div class="support-container">
+                    <!-- Form -->
+                    <div class="support-form-card glass-panel">
+                        <h3 class="card-title" style="margin-bottom: 20px;">Send a Direct Message</h3>
+                        <form class="support-form" id="support-form" onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <label for="support-name">Name</label>
+                                <input type="text" id="support-name" class="form-input" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="support-email">Email Address</label>
+                                <input type="email" id="support-email" class="form-input" placeholder="Your email address" required style="width: 100%; padding: 10px 14px; background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); outline: none;">
+                            </div>
+                            <div class="form-group">
+                                <label for="support-msg">Message</label>
+                                <textarea id="support-msg" class="textarea-field" placeholder="How can we help you today?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btn-send-support" style="width: max-content;">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact details card -->
+                    <div class="support-info-cards">
+                        <div class="agent-card glass-panel">
+                            <div class="agent-profile">
+                                <div class="agent-avatar">G</div>
+                                <div class="agent-meta">
+                                    <h3>GODFREY T R</h3>
+                                    <p>Support Lead & Administrator</p>
+                                </div>
+                            </div>
+                            
+                            <div class="agent-contact-details">
+                                <div class="contact-row">
+                                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    <span>Phone: +919344462238</span>
+                                </div>
+                                <div class="contact-row">
+                                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    <span>Email: support@codechallengepro.com</span>
+                                </div>
+                                <div class="contact-row">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span>Response Time: &lt; 2 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Authentication / Profile Section -->
+            <section class="app-section auth-section" id="auth">
+                <div class="auth-card glass-panel" id="auth-card-login">
+                    <div class="auth-header">
+                        <img src="logo.png" alt="CodeChallengePro Logo" class="auth-logo">
+                        <h2 class="auth-title">Welcome Back!</h2>
+                        <p class="auth-desc">Please sign in to access your profile, track your progress, and participate in challenges.</p>
+                    </div>
+
+                    <form class="auth-form" id="login-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                        </div>
+                        <a href="#" class="forgot-password-link">Forgot Password?</a>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 8px;">Sign In</button>
+                    </form>
+                </div>
+                
+                <!-- Signed In Profile Card (hidden by default) -->
+                <div class="auth-card glass-panel" id="auth-card-profile" style="display: none;">
+                    <div class="auth-header">
+                        <div class="user-avatar" id="profile-card-avatar" style="width: 64px; height: 64px; font-size: 1.8rem; margin: 0 auto 16px auto;">G</div>
+                        <h2 class="auth-title" id="profile-card-name">GODFREY T R</h2>
+                        <p class="auth-desc" id="profile-card-level">Level 1 Novice</p>
+                    </div>
+                    
+                    <div style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 16px 0; display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: var(--text-secondary);">Total Score:</span>
+                            <span style="font-weight: 600;" id="profile-card-xp">320 XP</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: var(--text-secondary);">Completed:</span>
+                            <span style="font-weight: 600;" id="profile-card-completed">0 / 4</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: var(--text-secondary);">Daily Streak:</span>
+                            <span style="font-weight: 600;" id="profile-card-streak">1 Day</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" id="btn-logout" style="width: 100%; justify-content: center;">Sign Out</button>
+                </div>
+            </section>
+
+        </main>
     </div>
-</section>
 
-    <footer>
-        <p>&copy; 2024 CodeChallengePro. All Rights Reserved.</p>
-    </footer>
+    <!-- Toast Notifications Area -->
+    <div class="toast-container" id="toast-container"></div>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
